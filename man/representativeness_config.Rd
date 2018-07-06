@@ -15,7 +15,7 @@ representativeness_config(dir, ext = "flt", xy, analysis, dst = NULL,
 
 \item{xy}{(string) Filepath to a CSV file where locations to sample the grid are located. Assumes x, y, z format. Column names are not important.}
 
-\item{analysis}{(string) The type of analysis to perform. Options are 'min_dis', 'sumsim', 'sumsim_cond.'}
+\item{analysis}{(string) The type of analysis to perform. Options are 'min_dis', 'sumsim', 'sumsim_cond.' See notes below.}
 
 \item{dst}{(string) Directory and filename to save outputs to. If NULL a folder will be created in dir called 'representativeness_<datetime>' to which output files will be written.}
 
@@ -38,4 +38,11 @@ If dry_run, filepath to job script, else outputs written to dir.
 }
 \description{
 Perform Tom-style representativeness analyses
+}
+\note{
+\itemize{
+ \item{"min_dis"}{calculate minimum distance to all locations (calculated on ecological distance)}
+ \item{"sumsim"}{calculates the summed similarity to all locations}
+ \item{"sumsim_cond"}{calculates the summed similarity to all locations multiplied by a value given in the third column of locations (e.g. condition, richness, etc)}
+}
 }
