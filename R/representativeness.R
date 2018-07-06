@@ -25,6 +25,7 @@
 ##' }
 #'
 #'@importFrom data.table fread
+#'@importFrom getPass getPass
 #'
 #'@export
 #'
@@ -121,16 +122,33 @@ representativeness_config = function(dir, ext = 'flt', xy, analysis, dst = NULL,
 #'
 #'@return output from SLURM
 #'
+#'#'@importFrom getPass getPass
+#'
 #'@export
 #'
 representativeness_run = function(job_script){
+  usr = Sys.info()[['user']]
   this_system = Sys.info()[['nodename']]
   this_system = unlist(lapply(c('pearcey', 'bracewell', 'ruby'), function(x)
     length(grep(x, this_system))))
   if (sum(this_system) > 0)
     system(paste('sbatch', job_script), intern = TRUE)
-    usr = Sys.info()[['user']]
     print(system(paste('squeue -u', usr), intern = TRUE))
+  } else {
+    ## text file with slurm args
+    txtfile = paste0(tempfile(), '.txt')
+    sink(txtfile)
+    cat('#!/bin/sh', sep = '\n')
+    cat(paste('sbatch', job_script), sep = '\n')
+    cat(paste('squeue -u', usr), sep = '\n')
+    cat('exec /bin/bash')
+    sink()
+    ## submit job via putty
+    pw = getPass()
+    putty = paste('"C:\\Program Files (x86)\\PuTTY\\plink.exe"')
+    args = paste("-ssh", paste0(usr, '@pearcey.hpc.csiro.au -l ', usr), "-pw", pw, '-m', txtfile) 
+    system(paste(putty, args), intern = T)
+    pw = NULL
+  }
 }
-  
 
