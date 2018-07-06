@@ -16,4 +16,8 @@ On windows, you can just use:
 **Use**  
 representativeness_config sets up a job (.sh) script to send to slurm on the hpc.  
 You can optionally be on a windows machine, and it will - as long as you have putty   
-insalled - send the shell script to the hpc to run (pearcey only presently).
+insalled - send the shell script to the hpc to run (pearcey only presently).  
+
+If you set dry_run to TRUE, the shell script will be created by not submitted.   
+You can fiddle with this, and submit directly from an hpc terminal, or use the   
+representativeness_run function. 
