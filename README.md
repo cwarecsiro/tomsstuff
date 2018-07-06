@@ -10,7 +10,7 @@ install on hpc as follows:
 `usr = Sys.info()[['user']]`  
 `withr::with_libpaths(new = paste('/home/', usr', install_github('cwarecsiro/tomsstuff'))`
 
-On windows, you can just use:
+On windows, you can just use:  
 `install_github('cwarecsiro/tomsstuff')
 
 **Use**  
