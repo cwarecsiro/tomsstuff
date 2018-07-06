@@ -41,8 +41,8 @@ Perform Tom-style representativeness analyses
 }
 \note{
 \itemize{
- \item{"min_dis"}{calculate minimum distance to all locations (calculated on ecological distance)}
- \item{"sumsim"}{calculates the summed similarity to all locations}
- \item{"sumsim_cond"}{calculates the summed similarity to all locations multiplied by a value given in the third column of locations (e.g. condition, richness, etc)}
+ \item{"min_dis"} {calculates minimum distance to all locations (calculated on ecological distance)}
+ \item{"sumsim"} {calculates the summed similarity to all locations}
+ \item{"sumsim_cond"} {calculates the summed similarity to all locations multiplied by a value given in the third column of locations (e.g. condition, richness, etc)}
 }
 }

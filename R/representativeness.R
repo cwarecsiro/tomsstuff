@@ -19,9 +19,9 @@
 #'
 #'@note 
 #'\itemize{
-##'  \item{"min_dis"}{calculate minimum distance to all locations (calculated on ecological distance)}
-##'  \item{"sumsim"}{calculates the summed similarity to all locations}
-##'  \item{"sumsim_cond"}{calculates the summed similarity to all locations multiplied by a value given in the third column of locations (e.g. condition, richness, etc)}
+##'  \item{"min_dis"} {calculates minimum distance to all locations (calculated on ecological distance)}
+##'  \item{"sumsim"} {calculates the summed similarity to all locations}
+##'  \item{"sumsim_cond"} {calculates the summed similarity to all locations multiplied by a value given in the third column of locations (e.g. condition, richness, etc)}
 ##' }
 #'
 #'@importFrom data.table fread
@@ -133,3 +133,4 @@ representativeness_run = function(job_script){
     print(system(paste('squeue -u', usr), intern = TRUE))
 }
   
+?representativeness_config
