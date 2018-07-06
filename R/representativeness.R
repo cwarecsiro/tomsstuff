@@ -87,7 +87,6 @@ representativeness_config = function(dir, ext = 'flt', xy, analysis, dst = NULL,
   cat('\n')
   cat('exit_code=$?', sep = '\n')
   cat('if [ "$exit_code" -ne 0 ]; then', sep = '\n') 
-  cat('\n')
   cat('\t', 'echo "----------------------------------------"')
   cat('\n')
   cat('\t', 'echo "<< JOB FAIL! >> Exit code was $exit_code"')
