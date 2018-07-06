@@ -5,7 +5,7 @@
 #'@param dir (string) Directory where raster grids (transgrids) are located. Will read every file by default.
 #'@param ext (str) Three letter string denoting the raster file extention (i.e. type of grid - e.g. flt, tif). Default 'flt.'
 #'@param xy (string) Filepath to a CSV file where locations to sample the grid are located. Assumes x, y, z format. Column names are not important.
-#'@param analysis (string) The type of analysis to perform. Options are 'min_dis', 'sumsim', 'sumsim_cond.' 
+#'@param analysis (string) The type of analysis to perform. Options are 'min_dis', 'sumsim', 'sumsim_cond.' See notes below. 
 #'@param dst (string) Directory and filename to save outputs to. If NULL a folder will be created in dir called 'representativeness_<datetime>' to which output files will be written.
 #'@param job_script (string) Filepath to write jobs script to. Deafult (NULL) will try and use another given arg, else /home/$USER/REPRESENTATIVENESS_<datetime>.sh
 #'@param walltime (string) Wall time to pass to slurm. If NULL this is guessed.
@@ -16,6 +16,8 @@
 #'@param dry_run (bool) If TRUE, job will not be submitted to slurm, but filepath to job script (.sh) returned. 
 #'
 #'@return If dry_run, filepath to job script, else outputs written to dir.
+#'
+#'@note
 #'
 #'@importFrom data.table fread
 #'
@@ -122,6 +124,7 @@ representativeness_run = function(job_script){
     length(grep(x, this_system))))
   if (sum(this_system) > 0)
     system(paste('sbatch', job_script), intern = TRUE)
+    usr = Sys.info()[['user']]
+    print(system(paste('squeue -u', usr), intern = TRUE))
 }
   
-
