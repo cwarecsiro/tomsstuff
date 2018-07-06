@@ -8,6 +8,6 @@ Maintainer: Chris Ware <chris.ware@csiro.au>
 SystemRequirements: git, python, slurm
 Licence: errr
 Imports: 
-	data.table
-	getPass
+			data.table,
+			getPass
 RoxygenNote: 6.0.1

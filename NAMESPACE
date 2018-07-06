@@ -3,3 +3,4 @@
 export(representativeness_config)
 export(representativeness_run)
 importFrom(data.table,fread)
+importFrom(getPass,getPass)

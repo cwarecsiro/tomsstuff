@@ -11,6 +11,8 @@ representativeness_run(job_script)
 }
 \value{
 output from SLURM
+
+#'@importFrom getPass getPass
 }
 \description{
 Run representativeness using slurm

@@ -131,7 +131,7 @@ representativeness_run = function(job_script){
   this_system = Sys.info()[['nodename']]
   this_system = unlist(lapply(c('pearcey', 'bracewell', 'ruby'), function(x)
     length(grep(x, this_system))))
-  if (sum(this_system) > 0)
+  if (sum(this_system) > 0){
     system(paste('sbatch', job_script), intern = TRUE)
     print(system(paste('squeue -u', usr), intern = TRUE))
   } else {
