@@ -107,6 +107,16 @@ representativeness_config = function(dir, ext = 'flt', xy, analysis, dst = NULL,
 }
 
 
+#'@title Run representativeness 
+#'
+#'@description Run representativeness using slurm
+#'
+#'@param job_script (string) Filepath to write jobs script to. 
+#'
+#'@return output from SLURM
+#'
+#'@export
+#'
 representativeness_run = function(job_script){
   this_system = Sys.info()[['nodename']]
   this_system = unlist(lapply(c('pearcey', 'bracewell', 'ruby')), function(x)
