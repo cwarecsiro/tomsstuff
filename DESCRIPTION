@@ -1,0 +1,10 @@
+Package: tomsstuff
+Version: 0.01
+Date: 2018-06-26
+Title: Perform Tom's stuff
+Description: Library for performing tom-style analyses
+Author: mok010
+Maintainer: Chris Ware <chris.ware@csiro.au>
+SystemRequirements: git, python, slurm
+Licence: errr
+Imports: assertthat
