@@ -16,7 +16,11 @@
 #'@param dry_run (bool) If TRUE, job will not be submitted to slurm, but filepath to job script (.sh) returned. 
 #'
 #'@return If dry_run, filepath to job script, else outputs written to dir.
-
+#'
+#'@importFrom data.table fread
+#'
+#'@export
+#'
 representativeness_config = function(dir, ext = 'flt', xy, analysis, dst = NULL,
                                      job_script = NULL, walltime = NULL, nCPU = 19, 
                                      mem = NULL, logfile = NULL, jobname = NULL, 
