@@ -119,8 +119,8 @@ representativeness_config = function(dir, ext = 'flt', xy, analysis, dst = NULL,
 #'
 representativeness_run = function(job_script){
   this_system = Sys.info()[['nodename']]
-  this_system = unlist(lapply(c('pearcey', 'bracewell', 'ruby')), function(x)
-    length(grep(x, this_system)))
+  this_system = unlist(lapply(c('pearcey', 'bracewell', 'ruby'), function(x)
+    length(grep(x, this_system))))
   if (sum(this_system) > 0)
     shell(paste('sbatch', job_script), intern = TRUE)
 }
