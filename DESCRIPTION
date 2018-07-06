@@ -8,3 +8,4 @@ Maintainer: Chris Ware <chris.ware@csiro.au>
 SystemRequirements: git, python, slurm
 Licence: errr
 Imports: assertthat
+RoxygenNote: 6.0.1
