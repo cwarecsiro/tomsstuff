@@ -47,9 +47,9 @@ representativeness_config = function(dir, ext = 'flt', xy, analysis, dst = NULL,
   }
   
   if(!is.null(mem)){
-    mem = '48GB'
-  } else {
     mem = paste0(mem, 'GB')
+  } else {
+    mem = '48GB'
   }
   
   if (is.null(walltime)){
