@@ -9,4 +9,5 @@ SystemRequirements: git, python, slurm
 Licence: errr
 Imports: 
 	data.table
+	getPass
 RoxygenNote: 6.0.1
