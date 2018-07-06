@@ -65,8 +65,8 @@ representativeness_config = function(dir, ext = 'flt', xy, analysis, dst = NULL,
     }
   }
   
-  if (is.null(log)){
-    log = paste0(jobname, '.txt')
+  if (is.null(logfile)){
+    logfile = paste0(jobname, '.txt')
   }
   
   sink(job_script)
@@ -76,7 +76,7 @@ representativeness_config = function(dir, ext = 'flt', xy, analysis, dst = NULL,
   cat(paste0('#SBATCH --ntasks-per-node=', nCPU), sep = '\n')
   cat(paste0('#SBATCH --mem=', mem), sep = '\n')
   cat(paste0('#SBATCH --time=', walltime), sep = '\n')
-  cat(paste0('#SBATCH --output=', log), sep = '\n')
+  cat(paste0('#SBATCH --output=', logfile), sep = '\n')
   cat ('\n')
   cat('echo "Launching slurm job id $SLURM_JOB_ID"', sep = '\n')
   cat('echo "$(date)"', sep = '\n')
