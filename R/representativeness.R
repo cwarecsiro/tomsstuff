@@ -6,8 +6,8 @@
 #'@param ext (str) Three letter string denoting the raster file extention (i.e. type of grid - e.g. flt, tif). Default 'flt.'
 #'@param xy (string) Filepath to a CSV file where locations to sample the grid are located. Assumes x, y, z format. Column names are not important.
 #'@param analysis (string) The type of analysis to perform. Options are 'min_dis', 'sumsim', 'sumsim_cond.' See notes below. 
-#'@param dst (string) Directory and filename to save outputs to. If NULL a folder will be created in dir called 'representativeness_<datetime>' to which output files will be written.
-#'@param job_script (string) Filepath to write jobs script to. Deafult (NULL) will try and use another given arg, else /home/$USER/REPRESENTATIVENESS_<datetime>.sh
+#'@param dst (string) Directory and filename to save outputs to. If NULL a folder will be created in dir named with the arg given for analysis (e.g. sumsim) to which output files will be written. Output files will take the name of the locations file by default.
+#'@param job_script (string) Filepath to write jobs script to. Deafult (NULL) will use another given arg, and write to e.g. /home/$USER/sumsim.sh
 #'@param walltime (string) Wall time to pass to slurm. If NULL this is guessed.
 #'@param mem (int) Memory require to pass to slurm (in GB). If NULL this is guessed.
 #'@param logfile (str) Filepath to write log file to. Default will be the location from which the analysis is executed (probably /home/$USER/slurm-<JOBID>.log)
@@ -39,8 +39,17 @@ representativeness_config = function(dir, ext = 'flt', xy, analysis, dst = NULL,
   if (is.null(job_script)){
     
     if (Sys.info()[['sysname']] == 'Windows'){
-    ## write to unc path
-    job_script = paste0('//pearceyhome.csiro.au/home_intel/', usr)
+      ## write to unc path
+      job_script = paste0('//pearceyhome.csiro.au/home_intel/', usr)
+      if (is.null(jobname)){
+        job_script = paste0(job_script, '/', gsub('.CSV', '', basename(xy)), '.sh')
+      } else {
+        job_script = paste0(job_script, '/', job_name, '.sh')
+      }
+    
+    } else {
+      ## write to home dir
+      job_script = paste0('/home/', usr)
       if (is.null(jobname)){
         job_script = paste0(job_script, '/', gsub('.CSV', '', basename(xy)), '.sh')
       } else {
@@ -151,4 +160,5 @@ representativeness_run = function(job_script){
     pw = NULL
   }
 }
+
 
